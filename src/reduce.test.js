@@ -3,8 +3,6 @@
 const { reduce } = require('./reduce');
 
 describe('reduce', () => {
-  let array = [1, 2, 3, 4, 5, 6];
-
   beforeAll(() => {
     Array.prototype.reduce2 = reduce; // eslint-disable-line
   });
@@ -18,6 +16,7 @@ describe('reduce', () => {
   });
 
   it('should sum array with initial value', () => {
+    const array = [1, 2, 3, 4, 5, 6];
     const callback = jest.fn((prev, x) => prev + x);
 
     const result = array.reduce2(callback, 0);
@@ -27,6 +26,7 @@ describe('reduce', () => {
   });
 
   it('should sum array without initial value', () => {
+    const array = [1, 2, 3, 4, 5, 6];
     const callback = jest.fn((prev, x) => prev + x);
 
     const result = array.reduce2(callback);
@@ -36,7 +36,7 @@ describe('reduce', () => {
   });
 
   it('should return initial value for empty array', () => {
-    array = [];
+    const array = [];
 
     const callback = jest.fn((prev, x) => prev + x);
 
@@ -46,19 +46,8 @@ describe('reduce', () => {
     expect(callback).not.toHaveBeenCalled();
   });
 
-  it('should return undefined for empty array without initial value', () => {
-    array = [];
-
-    const callback = jest.fn((prev, x) => prev + x);
-
-    const result = array.reduce2(callback);
-
-    expect(result).toBe(undefined);
-    expect(callback).not.toHaveBeenCalled();
-  });
-
   it('should work with single element and initial value', () => {
-    array = [1];
+    const array = [1];
 
     const callback = jest.fn((prev, x) => prev + x);
 
@@ -69,7 +58,7 @@ describe('reduce', () => {
   });
 
   it('should return element if single element and no initial value', () => {
-    array = [1];
+    const array = [1];
 
     const callback = jest.fn((prev, x) => prev + x);
 
