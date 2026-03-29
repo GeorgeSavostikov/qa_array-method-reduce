@@ -46,6 +46,16 @@ describe('reduce', () => {
     expect(callback).not.toHaveBeenCalled();
   });
 
+  it('should return undefined for empty array without initial value', () => {
+    const array = [];
+
+    const callback = jest.fn((prev, x) => prev + x);
+
+    const result = () => array.reduce2(callback);
+
+    expect(result).toThrow();
+  });
+
   it('should work with single element and initial value', () => {
     const array = [1];
 
