@@ -51,7 +51,7 @@ describe('reduce', () => {
 
     const callback = jest.fn((prev, x) => prev + x);
 
-    const result = () => array.reduce2(callback);
+    const result = () => array.reduce(callback);
 
     expect(result).toThrow();
   });
